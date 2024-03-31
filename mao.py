@@ -1,7 +1,9 @@
 dedos=[[[4,"Dedão direito",1],[8,"Indicador direito",2],[12,"Dedo do meio direito",4],[16,"Anelar direito",8],[20,"Mindinho direito",16],],[[25,"Dedão esquerdo",32],[29,"Indicador esquerdo",64],[33,"Dedo do meio esquerdo",128],[37,"Anelar esquerdo",256],[41,"Mindinho esquerdo",512],],]
 
 class Mao:
-    def __init__(self):
+    def __init__(self, rightHand=False):
+        self.rightHand = rightHand
+        self.hand = "Right" if self.rightHand == True else "Left" if self.rightHand == False else None
         self.noHand()
     
     def tot(self):
@@ -25,14 +27,6 @@ class Mao:
             return self.totHandD, self.totHandB
         return None, None
     
-    def noHand(self):
-        self.cords = [[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None]]
-        self.rightHand = None
-        self.totHandD = 0
-        self.totHandBArr = [0,0,0,0,0]
-        self.dTBin()
-    
-    
     def dTBin(self):
         if len(self.totHandBArr)>5:
             print(f"[ERRO] Mais que 5 números na array binária -> ({len(self.totHandBArr)})")
@@ -40,11 +34,18 @@ class Mao:
                 self.totHandBArr.pop()
             print("Utilizando apenas os 5 primeiros números em binário")
         self.totHandB = "".join(map(lambda n : str(n) if n==0 or n==1 else "0" if n <= 0 else "1", self.totHandBArr))
+
+    def noHand(self):
+        self.ok = False
+        self.cords = [[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None]]
+        self.totHandD = 0
+        self.totHandBArr = [0,0,0,0,0]
+        self.dTBin()
     
     def stts(self):
         self.ok = True if self.cords.count(None)==0 else False
-        
+    
     def dots(self, pontos):
-        if len(pontos)==20:
+        if len(pontos)==21:
             self.cords = pontos
         self.stts()
