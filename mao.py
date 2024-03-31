@@ -7,7 +7,7 @@ class Mao:
         self.noHand()
     
     def tot(self):
-        if self.cords.count(None)==0:
+        if self.stts():
             adcFH, dOE = 0, 0 if self.rightHand==True else 21, 1
             aux = [8,12,16,20]
             self.totHandD = 0
@@ -36,14 +36,15 @@ class Mao:
         self.totHandB = "".join(map(lambda n : str(n) if n==0 or n==1 else "0" if n <= 0 else "1", self.totHandBArr))
 
     def noHand(self):
+        self.cords = [[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0]]
         self.ok = False
-        self.cords = [[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None],[None, None]]
         self.totHandD = 0
         self.totHandBArr = [0,0,0,0,0]
         self.dTBin()
     
     def stts(self):
-        self.ok = True if self.cords.count(None)==0 else False
+        self.ok = False if self.cords.count([0, 0])==21 else True
+        return self.ok
     
     def dots(self, pontos):
         if len(pontos)==21:
