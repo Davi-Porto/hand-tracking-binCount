@@ -1,6 +1,6 @@
 <h1>binCount</h1>
 <div>
-  Mini game com tracking das mãos para calcular binários com as mãos em tempo real, aprenda a calcular rápido e fácil.
+  Mini game com tracking das mãos para calcular binários com as mãos em tempo real, para aprender a calcular rápido, decorar.
 </div>
 
 <h1>Linguagem</h1>
