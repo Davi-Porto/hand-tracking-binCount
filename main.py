@@ -160,7 +160,7 @@ while 1:
     cv2.line(img, (int(w/2), 70), (int(w/2), h-70), branco, 1, cv2.LINE_4)
     
     # Show final img
-    cv2.imshow("Imagem", img)
+    cv2.imshow("Imagem", cv2.flip(img, 1))
     
     # Simple delay to work well
     if cv2.waitKey(1) == 27: 
